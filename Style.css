@@ -113,6 +113,7 @@ nav a img{
   object-fit: cover;
   padding-right: 30px;
   width: 30%;
+  transition-duration: .2s;
 }
 
 .ContentTextBox{
@@ -135,6 +136,7 @@ nav a img{
   object-fit: cover;
   max-width: 45%;
   padding-right: 0;
+  transition-duration: .2s;
 }
 
 .linklogo{
