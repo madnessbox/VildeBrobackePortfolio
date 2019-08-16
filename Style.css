@@ -146,10 +146,10 @@ hr {
 
 }
 
-@font-face{
-    font-family: logoFont;
-    src: url(diablo_h.ttf);
-}
+//@font-face{
+  //font-family: logoFont;
+    //src: url(diablo_h.ttf);
+//}
 
 p{
   font-family: logoFont;
