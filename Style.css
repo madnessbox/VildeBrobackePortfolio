@@ -138,8 +138,9 @@ nav a img{
 }
 
 .SmallContentBox a img{
-  width: auto;
+  width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .linklogo{
@@ -156,6 +157,43 @@ nav a img{
   margin-bottom: 0px;
   filter: drop-shadow(5px 5px 0px #000);
   border-bottom: 10px solid #fff;
+}
+
+.TextBox{
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+.TextBox h3{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.BigContentBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.BigContentBox h2{
+  width: 70%;
+  margin-top: 0;
+  margin-bottom: 50px;
+}
+
+.BigContentBox iframe{
+  height: 700px;
+  width: 1244px;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 50px;
+}
+
+.BigContentBox img{
+  width: 35%;
 }
 
 hr {
