@@ -83,7 +83,7 @@ nav a img{
   padding-top: 50px;
 }
 
-.ContentBox{
+.ContentBox, .SmallContentBox{
   //background-color: #000;
   height: 400px;
   width: 50%;
@@ -94,7 +94,7 @@ nav a img{
   justify-content: center;
 }
 
-.ContentBox img:hover{
+.ContentBox img:hover, .SmallContentBox img:hover{
   transform: translate(5px, -5px);
   filter: drop-shadow(-5px 5px 0px #000);
   transition-duration: .2s;
@@ -118,6 +118,23 @@ nav a img{
 .ContentTextBox{
   max-width: 20%;
   padding-left: 20px;
+}
+
+.SmallContentBox{
+  width: 33%;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.SmallContentBox .ContentTextBox{
+  max-width: 45%;
+  padding-left: 20px;
+}
+
+.SmallContentBox .PosterImg{
+  object-fit: cover;
+  max-width: 45%;
+  padding-right: 0;
 }
 
 .linklogo{
