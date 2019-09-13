@@ -176,12 +176,14 @@ nav a img{
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .BigContentBox h2{
   width: 70%;
   margin-top: 0;
   margin-bottom: 50px;
+  text-align: center;
 }
 
 .BigContentBox iframe{
