@@ -1,0 +1,56 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #303030;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+    background: #202020;
+    left: 0;
+    right: 0;
+}
+
+nav a {
+    margin-right: 20px;
+}
+
+.Seperator {
+    height: 20px;
+    width: 40%;
+    color: #ffffff;
+    border-bottom: 5px solid #ffffff;
+    padding-bottom: 5px;
+    margin-left: 10px;
+}
+
+.Projects {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ProjectBox {
+    margin: 10px;
+    padding-right: 10px;
+}
+
+.ProjectBox img {
+    max-width: 500px;
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+}
+
+.ProjectBox .Poster {
+    max-width: 50%;
+    width: 10%;
+    height: 100%;
+}
