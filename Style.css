@@ -6,7 +6,7 @@ html, body {
 }
 
 body {
-    background: #303030;
+    background: #181a1b;
 }
 
 main {
@@ -18,7 +18,7 @@ main {
 
 nav {
     display: flex;
-    color: #ffffff;
+    color: #dbd9d4;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
@@ -30,7 +30,7 @@ nav a {
     margin-right: 0;
     padding-right: 0;
     text-decoration: none;
-    color: #ffffff;
+    color: #dbd9d4;
 }
 
 .Logo {
@@ -48,8 +48,8 @@ nav a {
     text-align: center;
     height: 1%;
     width: 50%;
-    color: #ffffff;
-    border-bottom: 2px solid #ffffff;
+    color: #dbd9d4;
+    border-bottom: 2px solid #dbd9d4;
     padding-bottom: 5px;
     margin-left: 10px;
     text-align: center;
@@ -109,7 +109,7 @@ nav a {
     width: 80%;
     display: flex;
     margin-top: 2%;
-    color: #ffffff;
+    color: #dbd9d4;
     word-wrap: break-word;
     justify-content: center;
     align-items: center;
@@ -123,4 +123,8 @@ nav a {
     object-fit: cover;
     width: 50%;
     height: 100%
+}
+
+.Download {
+    color: #d93025;
 }
