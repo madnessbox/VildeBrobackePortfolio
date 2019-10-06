@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Vilde Brobacke</title>
+    <link rel="stylesheet" href="../Style.css">
+  </head>
+  <body>
+    <main>
+        <nav>
+            <a href="../index.html"><img class="LogoSmall" src="../Images/Logos/Logo3.png"></a>
+            <a href="/Pages/About.html"><h2>About me</h2></a>
+            <a href="/Pages/Contact.html"><h2>Contact me</h2></a>
+        </nav>
+        
+        <img class="Logo" style="width: 50%" src="../Images/ProjectionRendering/racerEvenSmaller.gif">
+
+        <div class="ContentBox">
+            
+            <h3>This was a project I worked on because I wanted to try making some type of pseudo-3d using only 2d rendering in style with how older games had to simulate 3d graphics because of techical limitations. The project was made using c++ with nothing but the SDL library. With the SDL library I was able to use simple functions to render 2d squares (and sprites) to a simple window. I didn’t want to use anything more advanced since I wanted to try and recreate how older games used to implement this sort of functionality.
+            </h3>
+        </div>
+
+        <div class="ContentBox">
+            <img src="../Images/ProjectionRendering/RacerCurvesFaster.gif">
+            <h3>The basic road is made up of 2 parts: Firstly, there is what I call a “road-segment”. A road-segment is one horizontal line of the road. Secondly the layout of the road, such as curves and hills, are made up of multiple “map-segments”. A map-segment has 3 values which help calculate where each road-segment will be drawn, these 3 values are: Length(int), Curvature(float) and Hill(float). The Length value determines for how many road-segment one map-segment will last. The Curvature value determines how much the road should curve, a positive number curves the road to the right and a negative number to the left. Lastly, the Hill value does pretty much the same thing as the Curvature value, but curves the road vertically instead of horizontally. A positive Hill number will curve the road upwards, while a negative number will curve the road downwards.
+            <br><br>
+            Everything that is being drawn, is drawn back to front, meaning that the objects / textures that are the furthest away are drawn before the ones close to the camera. This is known as The Painter’s Algorithm, and it makes sure sure that textures appear behind and in front of eachother in the right order. 
+            </h3>
+        </div>
+        
+    </main>
+  </body>
+</html>
