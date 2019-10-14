@@ -14,6 +14,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 20px;
 }
 
 nav {
@@ -74,6 +75,15 @@ nav a {
     padding-right: 10px;
 }
 
+.ProjectBox h2, .ProjectBox h3{
+    padding: 0;
+    margin: 0;
+    color: #dbd9d4;
+    background: #0c0d0d;
+    height: 100%;
+    text-align: center;
+}
+
 .ProjectBox .Poster {
     min-width: 300px;
     width: 500px;
@@ -91,10 +101,10 @@ nav a {
 .ExperimentBox {
     margin: 10px;
     padding-right: 10px;
-    transition-duration: 0.2s;
+    margin-bottom: 20px;
 }
 
-.ExperimentBox h2{
+.ExperimentBox h2, .ExperimentBox h3{
     padding: 0;
     margin: 0;
     color: #dbd9d4;
@@ -109,9 +119,10 @@ nav a {
     height: 300px;
     object-fit: cover;
     margin: 0;
+    transition-duration: 0.2s;
 }
 
-.ExperimentBox:hover {
+.ExperimentBox img:hover {
     box-shadow: -10px -10px 0px #9e1b19;
     transform: translate(10px, 10px);
     transition-duration: 0.2s;
@@ -139,4 +150,25 @@ nav a {
 
 .Download {
     color: #d93025;
+}
+
+p, h1, h2, h3{
+  font-family: "Arial", Arial, Sans-serif;
+}
+
+.Skills {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+}
+
+.SkillBox {
+    color: #dbd9d4;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+}
+
+.SkillBox h1 {
+    color: #e44d2c;
 }
