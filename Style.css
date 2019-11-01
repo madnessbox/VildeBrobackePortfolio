@@ -54,7 +54,6 @@ nav a {
     padding-bottom: 5px;
     margin-left: 10px;
     text-align: center;
-    vertical-align: ;
     padding-bottom: 0;
 }
 
@@ -129,31 +128,46 @@ nav a {
 }
 
 .ContentBox {
-    width: 80%;
+    width: 70%;
     display: flex;
-    margin-top: 2%;
+    flex-direction: column;
     color: #dbd9d4;
-    word-wrap: break-word;
-    justify-content: center;
-    align-items: center;
-}
-
-.ContentBox h3 {
-    padding-left: 2%;
+    background-color: #2a2a2a;
+    padding: 20px;
 }
 
 .ContentBox img {
     object-fit: cover;
     width: 50%;
-    height: 100%
+    height: 100%;
+}
+
+.ContentBox:nth-child(even) {
+    background-color: #3b3b3b;
+}
+
+.ContentTextBox {
+    word-wrap: break-word;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.ContentTextBox h1 {
+        text-align: center;
 }
 
 .Download {
     color: #d93025;
 }
 
-p, h1, h2, h3{
+p, h1 {
   font-family: "Arial", Arial, Sans-serif;
+}
+
+h3, h2 {
+    font-family: "Arial", Arial, Sans-serif;
+    font-weight: normal;
 }
 
 .Skills {

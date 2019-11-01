@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Vilde Brobacke</title>
     <link rel="stylesheet" href="../Style.css">
+    
   </head>
   <body>
     <main>
@@ -13,27 +14,113 @@
             <a href="/Pages/Contact.html"><h2>Contact me</h2></a>
         </nav>
         
-        <img class="Logo" style="width: 50%" src="../Images/Momentum/Momentum_Logo.png">
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
+        
+        <img class="Logo" style="width: 50%; padding-bottom: 30px;" src="../Images/Momentum/Momentum_Logo.png">
 
         <div class="ContentBox">
             <!--<img src="../Images/Momentum/Momentum_Menu.png">-->
-            <iframe width="1580" height="366" src="https://www.youtube.com/embed/CVb64POY_eU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-            <h3>Momentum is a light puzzle platformer, set in a strange place where the technology is run on the forces of time. In order to sustain it, time has been harvested from several timelines. Due to this large harvest, the time continuum has started to fall apart. 
-            <br><br>
-            It is up to you to to find the time vault and release time back into the world. You will face challenges as you traverse this strange world in your search for all of the locks which are keeping the vault closed. They will test your ability in timing and planning. 
-            <br><br>
-            To your aid, you have a tool which can directly control the time energy the technology is run on. But the tool’s power is not unlimited, it can only control one object at a time, and due to its restrictions, you need to carefully time and plan in order to progress. 
-            <br><br>
-            Act quickly, but not without consideration, as any misstep might bring you to your doom, and when you fail, so will everything that ever existed. As history crumbles, so will the future it supports. 
-            </h3>
+            <iframe width="100%" height="750px" src="https://www.youtube.com/embed/CVb64POY_eU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+            <div class="ContentTextBox">
+                <h3>Momentum is a light puzzle platformer, set in a strange place where the technology is run on the forces of time. In order to sustain it, time has been harvested from several timelines. Due to this large harvest, the time continuum has started to fall apart. 
+                <br><br>
+                It is up to you to to find the time vault and release time back into the world. You will face challenges as you traverse this strange world in your search for all of the locks which are keeping the vault closed. They will test your ability in timing and planning. 
+                <br><br>
+                To your aid, you have a tool which can directly control the time energy the technology is run on. But the tool’s power is not unlimited, it can only control one object at a time, and due to its restrictions, you need to carefully time and plan in order to progress. 
+                <br><br>
+                Act quickly, but not without consideration, as any misstep might bring you to your doom, and when you fail, so will everything that ever existed. As history crumbles, so will the future it supports. 
+                </h3>
+            </div>
         </div>
 
         <div class="ContentBox">
-            <h3>This game was a school project that I worked together with 11 other people on over the course of 8 weeks. I mainly worked with creating tools with and for our level designer. 
-            <br><br>
-            The game idéa wasn't fully fledged out until a couple of weeks into the project, this required the programmers in the group to work on features in a way where a change of mechanics or simmlar wouldn't invalidate our work. This lead to us creating all the features, mechanics and tools in a highly modular and event-based way. This way, our designers could play around with the features and use them in multiple ways to help them decide on the final goal of the game.
-            </h3>
+            <div class="ContentTextBox">
+                <h1>What is this?</h1>
+                <h3>This game was a school project that I worked together with 11 other people on over the course of 8 weeks. I mainly worked with creating tools with and for our level designer. 
+                <br><br>
+                The game idea wasn't fully fledged out until a couple of weeks into the project, this required the programmers in the group to work on features in a way where a change of mechanics or simmlar wouldn't invalidate our work. This lead to us creating all the features, mechanics and tools in a highly modular and event-based way. This way, our designers could play around with the features and use them in multiple ways to help them decide on the final goal of the game.
+                <br><br>
+                An example of a feature built this way was the <b>Character Controller.</b> We didn't have a 3D artist comfortable with animation in our team, this led us to make the game an FPS, this way our 3D artists could focus more on the aesthetic of the game rather than having to worry about animations.
+                <br><br>
+                The <b>Character Controller</b> was built entirely modularly. This meant that the designers could attach any function to any controller event in-engine. We built the character controller this way to allow for much faster iteration for the designers, it was also thanks to this that we could find the right type of gameplay for our game much quicker.
+                </h3>
+                
+                    <div style="display:flex; flex-direction: row;">
+                        
+                        <pre class="prettyprint lang-cs" style="width: 50%;"> 
+    public class InputComponent : MonoBehaviour
+    {
+        public InputProfile inputProfile;
+    
+        public UnityEvent OnJump;
+        public UnityEvent OnInteract;
+    
+        [Header("Triggers")]
+        public UnityEvent OnPrimaryFire;
+        public UnityEvent OnPrimaryFireDown;
+        public UnityEvent OnPrimaryFireUp;
+    
+        public UnityEvent OnSecondaryFire;
+        public UnityEvent OnSecondaryFireUpDown;
+        public UnityEvent OnSecondaryFireUp;
+    
+        [Header("Axis")]
+        public UnityEventVector2 OnLookAxis;
+        public UnityEventVector2 OnMoveAxis;
+    
+        [Header("Other")]
+        public UnityEvent OnPauseButton;
+    
+        void Update()
+        {
+            if (inputProfile.GetJumpButton()) OnJump.Invoke();
+            if (inputProfile.GetPrimaryFireButton()) OnPrimaryFire.Invoke();
+            if (inputProfile.GetSecondaryFireButton()) OnSecondaryFire.Invoke();
+            if (inputProfile.GetPauseButton()) OnPauseButton.Invoke();
+        }
+    }
+                    </pre>
+                    <pre class="prettyprint lang-cs" style="width: 40%; height: 360px;">
+                    
+    public class InputProfile : ScriptableObject
+    {
+        public virtual Vector2 GetInputVector() => Vector2.zero;
+        public virtual Vector2 GetLookVector() => Vector2.zero;
+        
+        public virtual bool GetJumpButton() => false;
+        public virtual bool GetPrimaryFireButton() => false;
+        public virtual bool GetSecondaryFireButton() => false;
+        public virtual bool GetInteractButton() => false;
+        
+        public virtual bool GetJumpButtonDown() => false;
+        public virtual bool GetPrimaryFireButtonDown() => false;
+        public virtual bool GetSecondaryFireButtonDown() => false;
+        public virtual bool GetInteractButtonDown() => false;
+        
+        public virtual bool GetJumpButtonUp() => false;
+        public virtual bool GetPrimaryFireButtonUp() => false;
+        public virtual bool GetSecondaryFireButtonUp() => false;
+        public virtual bool GetInteractButtonUp() => false;
+        
+        public virtual bool GetPauseButton() => false;
+    }
+                    </pre>
+                </div>
+            </div>
             <img style="width: 30%" src="../Images/Momentum/RotationToolSnap.gif">
+            <img style="width: 30%" src="../Images/Momentum/PathFollowerGif.gif">
+        </div>
+        
+        <div class="ContentBox">
+            <div class="ContentTextBox">
+                <h1>Lessons Learned</h1>
+                <h3>During this project we had our ups and downs. But the major lesson that I learnt was to really check your resources before settling on an idea. What I mean by this is that we really liked the idea of the main mechanic (being able to rotate the sunlight), but we didn't really have the right people to execute the idéa fully.
+                <br><br>
+                Only one of our 3 designers were actually intrested in doing level design, wich we didn't realize before already settling on- and starting to build the project. This was an issue since our game was mainly a puzzle game. (Not so) suprisingly, puzzle games require lots and lots of level design to make it intresting. This was the projects main downfall.
+                <br><br>
+                So, how have I used this knowledge in my projects since this one? Well, I know always make sure everyone in the team gets to show to the rest what they are intrested in making / has the knowledge we need to make the project before we settle on an idea too quickly.
+                </h3>
+            </div>
         </div>
         
     </main>
