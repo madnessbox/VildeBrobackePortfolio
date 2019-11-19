@@ -13,12 +13,123 @@
             <a href="/Pages/Contact.html"><h2>Contact me</h2></a>
         </nav>
         
-        <img class="Logo" style="width: 30%" src="../Images/VHS/VHSLogo.png">
-
-        <div class="ContentBox">
-            <img src="../Images/VHS/GameScreen.png">
-            <h3>V.H.S
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
+        
+        <img class="Logo" style="width: 25%" src="../Images/VHS/VHSLogoShort.png">
+        
+        <div class="ContentBox" style="flex-direction: row; text-align: center; align-items: center;">
+            <img src="../Images/VHS/GameScreen.png" style="padding-right: 20px">
+            <h3>V.H.S is our take on the classic Pong but as a co-op game. You can play as either 2, 3 or 4 people at once, and your goal is to get as many bounces as possible before the ball flies out of the arena. There are power-ups as well as power-downs that you can collect while playing, these will either help you or make you lose way faster.
             </h3>
+        </div>
+        <div class="ContentBox" style="text-align: center; ">
+            <h3>As one of the two programmers who worked on this project I did a little bit of everything to make sure we got the project done in time. Some of the things I made were; the player movement, the scoring system and the power-up/down system.
+            </h3>
+            <h2>Movement Script | Highscore Script</h2>
+            <div style="display:flex; flex-direction: row; text-align: left">
+                        
+                        <pre class="prettyprint lang-cs" style="width: 45%; height: 600px;"> 
+    void Update()
+    {
+        Move();
+        KeepRotated();
+    }
+
+    void KeepRotated()
+    {
+        Vector2 difVector = Vector3.zero - transform.position;
+        difVector.Normalize();
+        float angle = Mathf.Atan2(difVector.y, difVector.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+    }
+
+    void Move()
+    {
+        if ((playerIndex == 0 && Input.GetAxisRaw("Player1Horizontal") > 0) ||
+            (playerIndex == 1 && Input.GetAxisRaw("Player2Horizontal") > 0) ||
+            (playerIndex == 2 && Input.GetAxisRaw("Player3Horizontal") > 0) ||
+            (playerIndex == 3 && Input.GetAxisRaw("Player4Horizontal") > 0))
+        {
+            angle += moveSpeed * Time.deltaTime * invertVal;
+        }
+        else if((playerIndex == 0 && Input.GetAxisRaw("Player1Horizontal") < 0) ||
+                (playerIndex == 1 && Input.GetAxisRaw("Player2Horizontal") < 0) ||
+                (playerIndex == 2 && Input.GetAxisRaw("Player3Horizontal") < 0) ||
+                (playerIndex == 3 && Input.GetAxisRaw("Player4Horizontal") < 0))
+        {
+            angle -= moveSpeed * Time.deltaTime * invertVal;
+        }
+
+
+        float newX = Mathf.Cos(angle) * 4.75f;
+        float newY = Mathf.Sin(angle) * 4.75f;
+
+        transform.position = new Vector3(newX, newY, 0);
+    }
+                    </pre>
+                    <pre class="prettyprint lang-cs" style="width: 40%;">
+                    
+    void GetScores()
+    {
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            topScores[0] = PlayerPrefs.GetInt("HighScore");
+        }
+
+        for (int i = 1; i < 5; i++)
+        {
+            if (PlayerPrefs.HasKey("Score" + i))
+            {
+                topScores[i] = PlayerPrefs.GetInt("Score" + i);
+            }
+        }
+    }
+    
+    void SaveScores()
+    {
+        PlayerPrefs.SetInt("HighScore", topScores[0]);
+
+        for (int i = 1; i < 5; i++)
+        {
+            PlayerPrefs.SetInt("Score" + i, topScores[i]);
+        }
+
+        PlayerPrefs.Save();
+    }
+    
+    public void SubmitScore(int score)
+    {
+        for (int i = 0; i < topScores.Length; i++)
+        {
+            if (score > topScores[i])
+            {
+                for (int j = HighScoresTexts.Length - 1; j >= i; j--)
+                {
+                    if (j - 1 >= 0)
+                    {
+                        topScores[j] = topScores[j - 1];
+                    }
+                }
+
+                topScores[i] = score;
+
+                PrintScoresToUI();
+                SaveScores();
+                return;
+            }
+        }
+    }
+                    </pre>
+                </div>
+        </div>
+        
+        <div class="ContentBox">
+            <div class="ContentTextBox" style="text-align: center">
+                <h1>Lessons Learned</h1>
+                <h3>During this project there was quite the kerfuffle between the designers and the programmers. The main issue we had was the communication, one of our two designers was sick pretty much the entire project, the other designer didn’t quite know what they wanted the game to be, and left that up to the programmers. But this let us two programmers really focus on improving our delegation skills, where we both had to split the work and efficiently communicate with the rest of the team.
+                </h3>
+            </div>
         </div>
         
     </main>
