@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Vilde Brobacke</title>
+    <link rel="stylesheet" href="../Style.css">
+  </head>
+  <body>
+    <main>
+        <nav>
+            <a href="../index.html"><img class="LogoSmall" src="../Images/Logos/Logo3.png"></a>
+            <a href="/Pages/About.html"><h2>About me</h2></a>
+            <a href="/Pages/Contact.html"><h2>Contact me</h2></a>
+        </nav>
+        
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
+        
+        <div class="ContentBox" style="flex-direction: row; text-align: center; align-items: center;">
+            <img src="../Images/RayMarching/RedRM.gif" style="padding-right: 20px">
+            <h3>While trying to learn shader programming I got intrested in trying to make my own Ray-Marcher after seeing videos such as <a class="Download" href="https://www.youtube.com/watch?v=svLzmFuSBhk">this</a> on youtube about the technique. I was always facinated by 3d fractals and how they were made so when I stubled across videos talking about Ray-Marching I had to try it for myself. And as luck would have it I had just started learning OpenGL and had an environment built up where I could experiment with such shaders.
+            </h3>
+        </div>
+        <div class="ContentBox" style="text-align: center">
+            <h1>Ray-Marching experiments</h1>
+            <h2>My first attempts at Ray-Marching looked like this: </h2>
+            
+            <div class="ContentImg">
+                <img src="../Images/RayMarching/CubeToSphere.gif">
+                <img src="../Images/RayMarching/OpenGl%20RM%20Balls(max).gif">
+            </div>
+
+            <h2>Then I started playing around with the Mod() math function:</h2>
+            <div class="ContentImg" >
+                <img src="../Images/RayMarching/OpenGl%20RM%20Balls(mod).gif" style="width: 50%">
+            </div>
+            
+            <h3>In these few gifs I used very simple Phong-lighting to get some more intresting visuals, I then tried to use some sort of distance-based lighting since I get a distance to each point on every object anyways while Ray-Marching.</h3>
+            
+            <div class="ContentImg" >
+                <img src="../Images/RayMarching/RM_DistanceColorAO.png" style="width: 50%">
+                <img src="../Images/RayMarching/RayMarching.png" style="width: 50%">
+            </div>
+        </div>
+        
+        <div class="ContentBox" style="text-align: center">
+            <h1>More advanced Ray-Marching experiments</h1>
+            <h2>First I tried making some translucent objects:</h2>
+            <div class="ContentImg" >
+                <img src="../Images/RayMarching/FirstTransparency.gif" style="width: 50%">
+            </div>
+            <h3>These work by instead of stopping the ray when hitting the surface of an object, continuing to march through and count how many steps are taken inside of every object, then using that counter as a multiplier on the color of that object. Ultimatly summing together all the "object colors" that were stepped through. This means that the thinner an object is, the less its color will contribute to the final summarized color of the pixel.</h3>
+            
+            <h2>I then thought; what if I bounce the ray towards the normal of the surface hit?</h2>
+            <div class="ContentImg" >
+                <img src="../Images/RayMarching/ballsReflection0.gif" style="width: 50%">
+            </div>
+            <h3>This would ultimatley act like a sort of ray-casting real-time reflections. Although more cartoony and less realistic since the ray was not reflected around the normal of the surface, but rather straight towards it.</h3>
+            <div class="ContentImg" >
+                <img src="../Images/RayMarching/ballsReflection3.gif" style="width: 50%">
+                <img src="../Images/RayMarching/ballsReflection4.gif" style="width: 50%">
+            </div>
+            <h3>I think this ended up looking suprisingly cool. You can also see that I am stricktly summarizing the color of every surface in these examples ultimatley making reflections brighter and brighter as they bounce, wich is not realistic.</h3>
+        </div> 
+        
+        <div class="ContentBox" style="text-align: center">
+            <h1>Ray-Marching in unity</h1>
+            <h3 style="width: 70%; align-self: center;">I wanted to try making a Ray-Marcher in unity and not just my own engine, for fun. And thanks to various tutorials on screen-shaders in unity I managed to make this:</h3>
+            <div class="ContentImg" >
+                <img src="../Images/RayMarching/URM1.gif" style="width: 33%">
+                <img src="../Images/RayMarching/URM5.gif" style="width: 33%">
+                <img src="../Images/RayMarching/URM2.gif" style="width: 33%">
+            </div>
+            <h3>The most challenging part about this was intergrating the unity specific stuff into the raymarcher, such as the lighting and object clipping.</h3>
+            <h2>I also made a Mandelbulb, wich is the 3D version of the famous 2D Mandelbrot fractal</h2>
+            <div class="ContentImg" >
+                <img src="../Images/RayMarching/URM4.gif" style="width: 50%">
+                <img src="../Images/RayMarching/URM3.gif" style="width: 50%">
+            </div>
+        </div> 
+    </main>
+  </body>
+</html>

@@ -142,6 +142,18 @@ nav a {
     height: 100%;
 }
 
+.ContentImg {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.ContentImg img {
+    object-fit: cover;
+    width: 30%;
+    height: auto;
+}
+
 .ContentBox:nth-child(even) {
     background-color: #3b3b3b;
 }
@@ -154,7 +166,7 @@ nav a {
 }
 
 .ContentTextBox h1 {
-        text-align: center;
+    text-align: center;
 }
 
 .Download {
