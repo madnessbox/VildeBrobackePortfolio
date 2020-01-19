@@ -17,10 +17,14 @@
         
         <div class="ContentBox" style="flex-direction: row; text-align: center; align-items: center;">
             <img src="../Images/RayMarching/RedRM.gif" style="padding-right: 20px">
-            <h3>While trying to learn shader programming I got intrested in trying to make my own Ray-Marcher after seeing videos such as <a class="Download" href="https://www.youtube.com/watch?v=svLzmFuSBhk">this</a> on youtube about the technique. I was always facinated by 3d fractals and how they were made so when I stubled across videos talking about Ray-Marching I had to try it for myself. And as luck would have it I had just started learning OpenGL and had an environment built up where I could experiment with such shaders.
-            </h3>
+            <div>
+                <h1>Intro</h1>
+                <h3>While trying to learn shader programming I got intrested in trying to make my own Ray-Marcher after seeing videos such as <a class="Download" href="https://www.youtube.com/watch?v=svLzmFuSBhk">this</a> on youtube about the technique. I was always facinated by 3d fractals and how they were made so when I stubled across videos talking about Ray-Marching I had to try it for myself. And as luck would have it I had just started learning OpenGL and had an environment built up where I could experiment with such shaders.
+                </h3>
+            </div>
+            
         </div>
-        <div class="ContentBox" style="text-align: center">
+        <div class="ContentBox" style="text-align: center; align-items: center">
             <h1>Ray-Marching experiments</h1>
             <h2>My first attempts at Ray-Marching looked like this: </h2>
             
@@ -31,10 +35,10 @@
 
             <h2>Then I started playing around with the Mod() math function:</h2>
             <div class="ContentImg" >
-                <img src="../Images/RayMarching/OpenGl%20RM%20Balls(mod).gif" style="width: 50%">
+                <img src="../Images/RayMarching/OpenGl%20RM%20Balls(mod).gif" style="width: 60%">
             </div>
             
-            <h3>In these few gifs I used very simple Phong-lighting to get some more intresting visuals, I then tried to use some sort of distance-based lighting since I get a distance to each point on every object anyways while Ray-Marching.</h3>
+            <h3 style="width: 70%">In these few gifs I used very simple Phong-lighting to get some more intresting visuals, I then tried to use some sort of distance-based lighting since I get a distance to each point on every object anyways while Ray-Marching.</h3>
             
             <div class="ContentImg" >
                 <img src="../Images/RayMarching/RM_DistanceColorAO.png" style="width: 50%">
@@ -42,25 +46,25 @@
             </div>
         </div>
         
-        <div class="ContentBox" style="text-align: center">
+        <div class="ContentBox" style="text-align: center; align-items: center">
             <h1>More advanced Ray-Marching experiments</h1>
             <h2>First I tried making some translucent objects:</h2>
             <div class="ContentImg" >
                 <img src="../Images/RayMarching/FirstTransparency.gif" style="width: 50%">
                 <img src="../Images/RayMarching/Transparency2.gif" style="width: 50%">
             </div>
-            <h3>These work by instead of stopping the ray when hitting the surface of an object, continuing to march through and count how many steps are taken inside of every object, then using that counter as a multiplier on the color of that object. Ultimatly summing together all the "object colors" that were stepped through. This means that the thinner an object is, the less its color will contribute to the final summarized color of the pixel.</h3>
+            <h3 style="width: 70%">These work by instead of stopping the ray when hitting the surface of an object, continuing to march through and count how many steps are taken inside of every object, then using that counter as a multiplier on the color of that object. Ultimatly summing together all the "object colors" that were stepped through. This means that the thinner an object is, the less its color will contribute to the final summarized color of the pixel.</h3>
             
             <h2>I then thought; what if I bounce the ray towards the normal of the surface hit?</h2>
             <div class="ContentImg" >
-                <img src="../Images/RayMarching/ballsReflection0.gif" style="width: 50%">
+                <img src="../Images/RayMarching/ballsReflection0.gif" style="width: 90%">
             </div>
-            <h3>This would ultimatley act like a sort of ray-casting real-time reflections. Although more cartoony and less realistic since the ray was not reflected around the normal of the surface, but rather straight towards it.</h3>
+            <h3 style="width: 70%">This would ultimatley act like a sort of ray-casting real-time reflections. Although more cartoony and less realistic since the ray was not reflected around the normal of the surface, but rather straight towards it.</h3>
             <div class="ContentImg" >
                 <img src="../Images/RayMarching/ballsReflection3.gif" style="width: 50%">
                 <img src="../Images/RayMarching/ballsReflection4.gif" style="width: 50%">
             </div>
-            <h3>I think this ended up looking suprisingly cool. You can also see that I am stricktly summarizing the color of every surface in these examples (not considering light attenuation or enery-loss) ultimatley making reflections brighter and brighter as they bounce, wich is not realistic.</h3>
+            <h3 style="width: 70%">I think this ended up looking suprisingly cool. You can also see that I am stricktly summarizing the color of every surface in these examples (not considering light attenuation or enery-loss) ultimatley making reflections brighter and brighter as they bounce, wich is not realistic.</h3>
         </div> 
         
         <div class="ContentBox" style="text-align: center">
