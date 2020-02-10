@@ -22,13 +22,16 @@
             <h3>V.H.S is our take on the classic Pong but as a co-op game. You can play as either 2, 3 or 4 people at once, and your goal is to get as many bounces as possible before the ball flies out of the arena. There are power-ups as well as power-downs that you can collect while playing, these will either help you or make you lose way faster.
             </h3>
         </div>
-        <div class="ContentBox" style="text-align: center; ">
-            <h3>As one of the two programmers who worked on this project I did a little bit of everything to make sure we got the project done in time. Some of the things I made were; the player movement, the scoring system and the power-up/down system.
+        <div class="ContentBox" style="text-align: center; align-items: center">
+            <div class="ContentTextBox" style="width: 70%">
+                <h3>As one of the two programmers who worked on this project I did a little bit of everything to make   sure we got the project done in time. Some of the things I made were; the player movement, the scoring system and the power-up/down system.
             </h3>
+            </div>
+            
             <h2>Movement Script | Highscore Script</h2>
-            <div style="display:flex; flex-direction: row; text-align: left">
+            <div style="display:flex; flex-direction: row; text-align: left; padding-left: 0; margin-left: 0; width: 100%">
                         
-                        <pre class="prettyprint lang-cs" style="width: 45%; height: 600px;"> 
+                        <pre class="prettyprint lang-cs" style="width: 65%; height: 600px; margin-right: 5%; margin-left: 0; padding-left: 0; padding-right: 0"> 
     void Update()
     {
         Move();
@@ -68,7 +71,7 @@
         transform.position = new Vector3(newX, newY, 0);
     }
                     </pre>
-                    <pre class="prettyprint lang-cs" style="width: 40%;">
+                    <pre class="prettyprint lang-cs" style="width: 54%; padding-right: 0; margin-right: 0">
                     
     void GetScores()
     {
@@ -124,8 +127,8 @@
                 </div>
         </div>
         
-        <div class="ContentBox">
-            <div class="ContentTextBox" style="text-align: center">
+        <div class="ContentBox" style="align-items: center">
+            <div class="ContentTextBox" style="text-align: center; width: 70%">
                 <h1>Lessons Learned</h1>
                 <h3>During this project there was quite the kerfuffle between the designers and the programmers. The main issue we had was the communication, one of our two designers was sick pretty much the entire project, the other designer didn’t quite know what they wanted the game to be, and left that up to the programmers. But this let us two programmers really focus on improving our delegation skills, where we both had to split the work and efficiently communicate with the rest of the team.
                 </h3>

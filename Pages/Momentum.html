@@ -18,10 +18,10 @@
         
         <img class="Logo" style="width: 50%; padding-bottom: 30px;" src="../Images/Momentum/Momentum_Logo.png">
 
-        <div class="ContentBox">
+        <div class="ContentBox" style="align-items: center">
             <!--<img src="../Images/Momentum/Momentum_Menu.png">-->
             <iframe width="100%" height="750px" src="https://www.youtube.com/embed/CVb64POY_eU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-            <div class="ContentTextBox">
+            <div class="ContentTextBox" style="width: 70%">
                 <h3>Momentum is a light puzzle platformer, set in a strange place where the technology is run on the forces of time. In order to sustain it, time has been harvested from several timelines. Due to this large harvest, the time continuum has started to fall apart. 
                 <br><br>
                 It is up to you to to find the time vault and release time back into the world. You will face challenges as you traverse this strange world in your search for all of the locks which are keeping the vault closed. They will test your ability in timing and planning. 
@@ -33,8 +33,8 @@
             </div>
         </div>
 
-        <div class="ContentBox">
-            <div class="ContentTextBox">
+        <div class="ContentBox" style="align-items: center">
+            <div class="ContentTextBox" style="width: 70%">
                 <h1>What is this?</h1>
                 <h3>This game was a school project that I worked together with 11 other people on over the course of 8 weeks. I mainly worked with creating tools with and for our level designer. 
                 <br><br>
@@ -43,11 +43,13 @@
                 An example of a feature built this way was the <b>Character Controller.</b> We didn't have a 3D artist comfortable with animation in our team, this led us to make the game an FPS, this way our 3D artists could focus more on the aesthetic of the game rather than having to worry about animations.
                 <br><br>
                 The <b>Character Controller</b> was built entirely modularly. This meant that the designers could attach any function to any controller event in-engine. We built the character controller this way to allow for much faster iteration for the designers, it was also thanks to this that we could find the right type of gameplay for our game much quicker.
+                <br><br>
+                Here's how the Input worked in the Character Controller. It is entirely delegate-based, meaning that the designers could attach any function from any script on any object to the input of the player, making iteration much easier as the designers didn't have to write any code themselves.
                 </h3>
-                
+            </div>
                     <div style="display:flex; flex-direction: row;">
                         
-                        <pre class="prettyprint lang-cs" style="width: 50%;"> 
+                        <pre class="prettyprint lang-cs" style="width: 60%;"> 
     public class InputComponent : MonoBehaviour
     {
         public InputProfile inputProfile;
@@ -80,7 +82,7 @@
         }
     }
                     </pre>
-                    <pre class="prettyprint lang-cs" style="width: 40%; height: 360px;">
+                    <pre class="prettyprint lang-cs" style="width: 50%; height: 360px;">
                     
     public class InputProfile : ScriptableObject
     {
@@ -106,7 +108,58 @@
     }
                     </pre>
                 </div>
+            
+            
+        </div>
+        <div class="ContentBox" style="align-items: center">
+            <div class="ContentTextBox" style="width: 70%">
+                <h1>Tools</h1>
+                <h3>As I said before, one of the main things I worked on in this project were different tools for the designers. One of these tools were the launchpads and their visualizer.
+                </h3>
             </div>
+            <div style="justify-content: center; align-content: center; align-items: center">
+                <img style="width: 100%" src="../Images/Momentum/LaunchPad.gif">
+            </div>
+            <div class="ContentTextBox" style="width: 70%">
+                <h3>The green line represents how the player will fly after stepping on the launchpad. The target is movable in the editor and the fly-path updates in real-time according to the position of the target and the desired height set by the user. In this project  we decided to make our own physically driven character controller, since the default character controller and physics component didn't work the way we needed it to. This also made it much easier to do the physics calculations for the launchpad. The maths behind figuring out what force to add to the character in order for it to follow the desired path was a traditional trajectory calculation. That looked like this:
+                </h3>
+            </div>
+             <div style="display:flex; flex-direction: column;">
+                        
+                <pre class="prettyprint lang-cs" style="width: 100%;"> 
+    LaunchData CalculateLaunchData(Vector3 from, float gravity)
+    {
+        float displacementY = target.y - from.y;
+        Vector3 displacementXZ = new Vector3(target.x - from.x, 0, target.z - from.z);
+        float time = Mathf.Sqrt(-2 * height / gravity) + Mathf.Sqrt(2 * (displacementY - height) / gravity);
+        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * height);
+        Vector3 velocityXZ = displacementXZ / time;
+
+        return new LaunchData(velocityXZ + velocityY * -Mathf.Sign(gravity), time);
+    }
+                </pre>
+                <pre class="prettyprint lang-cs" style="width: 100%;"> 
+    struct LaunchData
+    {
+        public readonly Vector3 initialVelocity;
+        public readonly float timeToTarget;
+
+        public LaunchData(Vector3 initialVelocity, float timeToTarget)
+        {
+            this.initialVelocity = initialVelocity;
+            this.timeToTarget = timeToTarget;
+        }
+    }
+                </pre>
+            </div>
+            <div class="ContentTextBox" style="width: 70%">
+                <h3>Where LaunchData is a struct containing initialVelocity and deltaToTarget which are used to update the characters position in the character controller.
+                </h3>
+            </div>
+            <div class="ContentTextBox" style="width: 70%; align-items: center; text-align: center">
+                <h2>Some of the other tools I worked on looked like this:</h2>
+            </div>
+            
             <div style="justify-content: center; align-content: center; align-items: center">
                 <img style="width: 49%" src="../Images/Momentum/RotationToolSnap.gif">
                 <img style="width: 49%" src="../Images/Momentum/PathFollowerGif.gif">
@@ -118,7 +171,7 @@
             <h3 style="width: 70%">The biggest challenge we faced during this project was that we struggled "finding the fun" in the game, whilst also having somewhat a confilct of intrest amongst the members. 
             </h3>
             <h2 style="padding-bottom: 0; margin-bottom: 0">Why did we struggle finding the fun?</h2>
-            <h3 style="padding-top: 0; margin-top: 0">The main reason for this was the fact that we were building too many things in too many directions at once. Basically, we weren't completley on the same page with what the game was supposed to be. One example of this was how one of our designers really wanted to incorporate much more in-depth storytelling then what we had time for. This lead to one of our programmers spending almost a week at developing a fully fledged AI-dialouge system. The idea behind this was for the tool you use in the game to be a companion that sometimes talked to the player, but we simply didn't have enough time to fully develop this feature, and therefore had to completley scrap it.
+            <h3 style="padding-top: 0; margin-top: 0; width: 70%">The main reason for this was the fact that we were building too many things in too many directions at once. Basically, we weren't completley on the same page with what the game was supposed to be. One example of this was how one of our designers really wanted to incorporate much more in-depth storytelling then what we had time for. This lead to one of our programmers spending almost a week at developing a fully fledged AI-dialouge system. The idea behind this was for the tool you use in the game to be a companion that sometimes talked to the player, but we simply didn't have enough time to fully develop this feature, and therefore had to completley scrap it.
             </h3>
         </div>
         
